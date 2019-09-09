@@ -32,6 +32,17 @@ function! s:autoApply()
         endif
         return
     endif
+    let largeColumn = get(g:, 'zf_txt_large_column', 1000)
+    if largeColumn > 0
+        for line in readfile(expand("<afile>"), '', get(g:, 'zf_txt_large_column_checklines', 5))
+            if len(line) >= largeColumn
+                if &syntax == 'zftxt'
+                    syntax clear
+                endif
+                return
+            endif
+        endfor
+    endif
 
     if &syntax != 'zftxt'
         let b:ZFVimTxtHighlight_syntaxSaved=&syntax
