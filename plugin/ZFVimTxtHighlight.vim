@@ -34,7 +34,7 @@ function! s:autoApply()
     endif
     let largeColumn = get(g:, 'zf_txt_large_column', 1000)
     if largeColumn > 0 && filereadable(expand('<afile>'))
-        for line in readfile(expand('<afile>'), '', get(g:, 'zf_txt_large_column_checklines', 5))
+        for line in readfile(expand('<afile>'), '', get(g:, 'zf_txt_large_column_checklines', 20))
             if len(line) >= largeColumn
                 if &syntax == 'zftxt'
                     syntax clear
