@@ -26,15 +26,15 @@ function! s:autoApply()
     endif
 
     let largeFile = get(g:, 'zf_txt_large_file', 5 * 1024 * 1024)
-    if largeFile > 0 && getfsize(expand("<afile>")) > largeFile
+    if largeFile > 0 && getfsize(expand('<afile>')) > largeFile
         if &syntax == 'zftxt'
             syntax clear
         endif
         return
     endif
     let largeColumn = get(g:, 'zf_txt_large_column', 1000)
-    if largeColumn > 0
-        for line in readfile(expand("<afile>"), '', get(g:, 'zf_txt_large_column_checklines', 5))
+    if largeColumn > 0 && filereadable(expand('<afile>'))
+        for line in readfile(expand('<afile>'), '', get(g:, 'zf_txt_large_column_checklines', 5))
             if len(line) >= largeColumn
                 if &syntax == 'zftxt'
                     syntax clear
@@ -57,9 +57,9 @@ augroup ZF_VimTxtHighlight_auto
 augroup END
 
 function! ZF_VimTxtHighlightEcho()
-    echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-                \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-                \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"
+    echo 'hi<' . synIDattr(synID(line('.'), col('.'), 1), 'name') . '> trans<'
+                \ . synIDattr(synID(line('.'), col('.'), 0), 'name') . '> lo<'
+                \ . synIDattr(synIDtrans(synID(line('.'), col('.'), 1)), 'name') . '>'
 endfunction
 command! -nargs=0 ZFHIGHLIGHT :call ZF_VimTxtHighlightEcho()
 
