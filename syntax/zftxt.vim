@@ -4,28 +4,17 @@ elseif exists("b:current_syntax")
     finish
 endif
 
-syn cluster zftxtContainsExceptString add=zftxtDelims
-syn cluster zftxtContainsExceptString add=zftxtFunc
-syn cluster zftxtContainsExceptString add=zftxtLink
-syn cluster zftxtContainsExceptString add=zftxtMark
-syn cluster zftxtContainsExceptString add=zftxtNumber
-syn cluster zftxtContainsExceptString add=zftxtOption
-syn cluster zftxtContainsExceptString add=zftxtPreProc
-syn cluster zftxtContainsExceptString add=zftxtEscapedChar
-syn cluster zftxtContainsExceptString add=zftxtType
-syn cluster zftxtContainsExceptString add=zftxtVar
-
 syn cluster zftxtContains add=zftxtDelims
+syn cluster zftxtContains add=zftxtEscapedChar
 syn cluster zftxtContains add=zftxtFunc
 syn cluster zftxtContains add=zftxtLink
 syn cluster zftxtContains add=zftxtMark
 syn cluster zftxtContains add=zftxtNumber
 syn cluster zftxtContains add=zftxtOption
 syn cluster zftxtContains add=zftxtPreProc
-syn cluster zftxtContains add=zftxtEscapedChar
+syn cluster zftxtContains add=zftxtString
 syn cluster zftxtContains add=zftxtType
 syn cluster zftxtContains add=zftxtVar
-syn cluster zftxtContains add=zftxtString
 
 " ============================================================
 syn match zftxtNormal "[[:alpha:]]" contains=@zftxtOperator
@@ -61,14 +50,14 @@ syn region zftxtComments start="<!--" end="-->" contains=@zftxtContains
 
 " ============================================================
 " (xxx)
-" \([^,&\*\(\)\[\]\{\}<>]+\)
-syn match zftxtDelims  "([^,&\*()[\]{}<>]\+)" contains=@zftxtContains
+" \([^,&\*\(\)\[\]\{\}<>!=]+\)
+syn match zftxtDelims  "([^,&\*()[\]{}<>!=]\+)" contains=@zftxtContains
 " [xxx]
-" \[[^,&\*\(\)\[\]\{\}<>]+\]
-syn match zftxtDelims "\[[^,&\*()[\]{}<>]\+\]" contains=@zftxtContains
+" \[[^,&\*\(\)\[\]\{\}<>!=]+\]
+syn match zftxtDelims "\[[^,&\*()[\]{}<>!=]\+\]" contains=@zftxtContains
 " {xxx}
-" \{[^,&\*\(\)\[\]\{\}<>]+\}
-syn match zftxtDelims  "{[^,&\*()[\]{}<>]\+}" contains=@zftxtContains
+" \{[^,&\*\(\)\[\]\{\}<>!=]+\}
+syn match zftxtDelims  "{[^,&\*()[\]{}<>!=]\+}" contains=@zftxtContains
 
 " ============================================================
 " \x
@@ -104,17 +93,17 @@ syn match zftxtVar "%\+{[_a-zA-Z][_a-zA-Z0-9]*}%*"
 " ============================================================
 " "xxx"
 " ".*?"
-syn match zftxtString '".\{-}"' contains=@zftxtContainsExceptString
+syn match zftxtString '".\{-}"' contains=@zftxtContains
 " 'xxx'
 " (?<=([^_a-zA-Z0-9])|^)'.*?'
-syn match zftxtString "\%(\([^_a-zA-Z0-9]\)\|^\)\@<='.\{-}'" contains=@zftxtContainsExceptString
+syn match zftxtString "\%(\([^_a-zA-Z0-9]\)\|^\)\@<='.\{-}'" contains=@zftxtContains
 " `xxx`
 " `+.*?`+
-syn match zftxtString "`\+.\{-}`\+" contains=@zftxtContainsExceptString
+syn match zftxtString "`\+.\{-}`\+" contains=@zftxtContains
 " “xxx”
 " ‘.*?’
-syn match zftxtString "\%u201c.\{-}\%u201d" contains=@zftxtContainsExceptString
-syn match zftxtString "\%u2018.\{-}\%u2019" contains=@zftxtContainsExceptString
+syn match zftxtString "\%u201c.\{-}\%u201d" contains=@zftxtContains
+syn match zftxtString "\%u2018.\{-}\%u2019" contains=@zftxtContains
 
 " ============================================================
 " 0xAbcd1234
