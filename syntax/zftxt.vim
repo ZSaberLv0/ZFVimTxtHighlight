@@ -50,14 +50,14 @@ syn region zftxtComments start="<!--" end="-->" contains=@zftxtContains
 
 " ============================================================
 " (xxx)
-" \([^,&\*\(\)\[\]\{\}<>!=]+\)
-syn match zftxtDelims  "([^,&\*()[\]{}<>!=]\+)" contains=@zftxtContains
+" \([^,&\*\(\)\[\]\{\}<>!=\- ]+\)
+syn match zftxtDelims  "([^,&\*()[\]{}<>!=\- ]\+)" contains=@zftxtContains
 " [xxx]
-" \[[^,&\*\(\)\[\]\{\}<>!=]+\]
-syn match zftxtDelims "\[[^,&\*()[\]{}<>!=]\+\]" contains=@zftxtContains
+" \[[^,&\*\(\)\[\]\{\}<>!=\- ]+\]
+syn match zftxtDelims "\[[^,&\*()[\]{}<>!=\- ]\+\]" contains=@zftxtContains
 " {xxx}
-" \{[^,&\*\(\)\[\]\{\}<>!=]+\}
-syn match zftxtDelims  "{[^,&\*()[\]{}<>!=]\+}" contains=@zftxtContains
+" \{[^,&\*\(\)\[\]\{\}<>!=\- ]+\}
+syn match zftxtDelims  "{[^,&\*()[\]{}<>!=\- ]\+}" contains=@zftxtContains
 
 " ============================================================
 " \x
@@ -143,15 +143,12 @@ syn match zftxtFunc "[_a-zA-Z][_a-zA-Z0-9#:]*\([ \t]*<.*>\)\=\%([ \t]*(\)\@="
 syn match zftxtType "\([_a-zA-Z][_a-zA-Z0-9]*\)\=\(::\=[_a-zA-Z][_a-zA-Z0-9]*\)\+"
 
 " ============================================================
-" [Abc_123-Xyz:]//Abc.Xyz
-" ([a-zA-Z0-9_\-]+:)*\/\/[a-zA-Z0-9_\-]+\.[a-zA-Z0-9_\-]+[a-zA-Z0-9~!@#\$%\^&\*\-_=\+\\\|;:,\.\/\?]*
-syn match zftxtLink "\([a-zA-Z0-9_\-]\+:\)*\/\/[a-zA-Z0-9_\-]\+\.[a-zA-Z0-9_\-]\+[a-zA-Z0-9~!@#\$%\^&\*\-_=+\\|;:,\.\/?]*"
 " Abc_123-Xyz://[xxx]
 " [a-zA-Z0-9_\-]+:\/\/[a-zA-Z0-9~!@#\$%\^&\*\-_=\+\\\|;:,\.\/\?]*
 syn match zftxtLink "[a-zA-Z0-9_\-]\+:\/\/[a-zA-Z0-9~!@#\$%\^&\*\-_=+\\|;:,\.\/?]*"
-" xxx.xxx.xxx
-" [a-zA-Z0-9_\-]+(\.[a-zA-Z0-9_\-]+){2,}[a-zA-Z0-9~!@#\$%\^&\*\-_=\+\\\|;:,\.\/\?]*
-syn match zftxtLink "[a-zA-Z0-9_\-]\+\(\.[a-zA-Z0-9_\-]\+\)\{2,}[a-zA-Z0-9~!@#\$%\^&\*\-_=+\\|;:,\.\/?]*"
+" abc_123-.abc_123-.abc_123-
+" [a-z0-9_\-]+(\.[a-z0-9_\-]+){2,}[a-z0-9~!@#\$%\^&\*\-_=\+\\\|;:,\.\/\?]*
+syn match zftxtLink "[a-z0-9_\-]\+\(\.[a-z0-9_\-]\+\)\{2,}[a-z0-9~!@#\$%\^&\*\-_=+\\|;:,\.\/?]*"
 " xxx@xxx
 " [a-zA-Z0-9_\-\.]+@[a-zA-Z0-9_\-\.]+
 syn match zftxtLink "[a-zA-Z0-9_\-\.]\+@[a-zA-Z0-9_\-\.]\+"
