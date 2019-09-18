@@ -163,7 +163,7 @@ syn keyword zftxtKeyword switch case default
 syn keyword zftxtKeyword for endfor foreach for_each while endwhile until
 syn keyword zftxtKeyword function endfunction return
 syn keyword zftxtKeyword try endtry catch finally
-syn keyword zftxtKeyword static const virtual final native
+syn keyword zftxtKeyword static const virtual final native readonly
 syn keyword zftxtKeyword class struct interface public protected private friend extend extends
 syn keyword zftxtKeyword this self
 syn keyword zftxtKeyword void int char string long bool boolean float double
