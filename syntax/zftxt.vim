@@ -4,7 +4,6 @@ elseif exists("b:current_syntax")
     finish
 endif
 
-syn cluster zftxtContains add=zftxtDelims
 syn cluster zftxtContains add=zftxtEscapedChar
 syn cluster zftxtContains add=zftxtFunc
 syn cluster zftxtContains add=zftxtLink
@@ -47,17 +46,6 @@ syn region zftxtComments start="/\*\+" end="\*\+/" contains=@zftxtContains
 " <!--
 " -->
 syn region zftxtComments start="<!--" end="-->" contains=@zftxtContains
-
-" ============================================================
-" (xxx)
-" \([^,&\*\(\)\[\]\{\}<>!=\- ]+\)
-syn match zftxtDelims  "([^,&\*()[\]{}<>!=\- ]\+)" contains=@zftxtContains
-" [xxx]
-" \[[^,&\*\(\)\[\]\{\}<>!=\- ]+\]
-syn match zftxtDelims "\[[^,&\*()[\]{}<>!=\- ]\+\]" contains=@zftxtContains
-" {xxx}
-" \{[^,&\*\(\)\[\]\{\}<>!=\- ]+\}
-syn match zftxtDelims  "{[^,&\*()[\]{}<>!=\- ]\+}" contains=@zftxtContains
 
 " ============================================================
 " \x
@@ -176,7 +164,6 @@ syn keyword zftxtKeyword use using namespace
 syn case match
 
 hi def link zftxtComments Comment
-hi def link zftxtDelims Delimiter
 hi def link zftxtFunc Function
 hi def link zftxtKeyword Keyword
 hi def link zftxtLink Underlined
