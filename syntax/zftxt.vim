@@ -166,7 +166,7 @@ syn keyword zftxtKeyword try endtry catch finally
 syn keyword zftxtKeyword static const virtual final native readonly
 syn keyword zftxtKeyword class struct interface public protected private friend extend extends
 syn keyword zftxtKeyword this self
-syn keyword zftxtKeyword void int char string long bool boolean float double
+syn keyword zftxtKeyword void null nil int char string long bool boolean float double
 syn keyword zftxtKeyword let set var local
 syn keyword zftxtKeyword export import include require
 syn keyword zftxtKeyword call command
