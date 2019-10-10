@@ -12,6 +12,7 @@ syn cluster zftxtContains add=zftxtNumber
 syn cluster zftxtContains add=zftxtOption
 syn cluster zftxtContains add=zftxtPreProc
 syn cluster zftxtContains add=zftxtString
+syn cluster zftxtContains add=zftxtTag
 syn cluster zftxtContains add=zftxtType
 syn cluster zftxtContains add=zftxtVar
 
@@ -64,19 +65,19 @@ syn region zftxtTag start="<[?\/]\=\%(php\)\@![_a-zA-Z][_a-zA-Z0-9]*" end="[?\/]
 syn match zftxtVar "\$\+[_a-zA-Z0-9]\+"
 " $([xxx])
 " \$+\([^\(\)]*\)
-syn match zftxtVar "\$\+([^()]*)"
+syn match zftxtVar "\$\+([^()]*)" contains=@zftxtContains
 " ${[xxx]}
 " \$+\{[^\{\}]*\}
-syn match zftxtVar "\$\+{[^{}]*}"
+syn match zftxtVar "\$\+{[^{}]*}" contains=@zftxtContains
 " %Abc_123%
 " %+[_a-zA-Z0-9]+%*
 syn match zftxtVar "%\+[_a-zA-Z0-9]\+%*"
 " %([xxx])%
 " %+\([^\(\)]*\)%*
-syn match zftxtVar "%\+([^()]*)%*"
+syn match zftxtVar "%\+([^()]*)%*" contains=@zftxtContains
 " %{[xxx]}%
 " %+\{[^\{\}]*\}%*
-syn match zftxtVar "%\+{[^{}]*}%*"
+syn match zftxtVar "%\+{[^{}]*}%*" contains=@zftxtContains
 
 " ============================================================
 " "xxx"
