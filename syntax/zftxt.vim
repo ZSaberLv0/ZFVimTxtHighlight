@@ -148,7 +148,7 @@ syn case match
 
 syn case ignore
 syn keyword zftxtKeyword if else elseif elif endif fi end
-syn keyword zftxtKeyword switch case default
+syn keyword zftxtKeyword switch case default break
 syn keyword zftxtKeyword for endfor foreach for_each while endwhile until
 syn keyword zftxtKeyword function endfunction return
 syn keyword zftxtKeyword try endtry catch finally
