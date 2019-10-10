@@ -60,23 +60,23 @@ syn region zftxtTag start="<[?\/]\=\%(php\)\@![_a-zA-Z][_a-zA-Z0-9]*" end="[?\/]
 
 " ============================================================
 " $Abc_123
-" \$+[_a-zA-Z][_a-zA-Z0-9]*
-syn match zftxtVar "\$\+[_a-zA-Z][_a-zA-Z0-9]*"
-" $(Abc_123)
-" \$+\([_a-zA-Z][_a-zA-Z0-9]*\)
-syn match zftxtVar "\$\+([_a-zA-Z][_a-zA-Z0-9]*)"
-" ${Abc_123}
-" \$+\{[_a-zA-Z][_a-zA-Z0-9]*\}
-syn match zftxtVar "\$\+{[_a-zA-Z][_a-zA-Z0-9]*}"
+" \$+[_a-zA-Z0-9]+
+syn match zftxtVar "\$\+[_a-zA-Z0-9]\+"
+" $([xxx])
+" \$+\([^\(\)]*\)
+syn match zftxtVar "\$\+([^()]*)"
+" ${[xxx]}
+" \$+\{[^\{\}]*\}
+syn match zftxtVar "\$\+{[^{}]*}"
 " %Abc_123%
-" %+[_a-zA-Z][_a-zA-Z0-9]*%*
-syn match zftxtVar "%\+[_a-zA-Z][_a-zA-Z0-9]*%*"
-" %(Abc_123)%
-" %+\([_a-zA-Z][_a-zA-Z0-9]*\)%*
-syn match zftxtVar "%\+([_a-zA-Z][_a-zA-Z0-9]*)%*"
-" %{Abc_123}%
-" %+\{[_a-zA-Z][_a-zA-Z0-9]*\}%*
-syn match zftxtVar "%\+{[_a-zA-Z][_a-zA-Z0-9]*}%*"
+" %+[_a-zA-Z0-9]+%*
+syn match zftxtVar "%\+[_a-zA-Z0-9]\+%*"
+" %([xxx])%
+" %+\([^\(\)]*\)%*
+syn match zftxtVar "%\+([^()]*)%*"
+" %{[xxx]}%
+" %+\{[^\{\}]*\}%*
+syn match zftxtVar "%\+{[^{}]*}%*"
 
 " ============================================================
 " "xxx"
