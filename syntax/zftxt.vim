@@ -4,17 +4,19 @@ elseif exists("b:current_syntax")
     finish
 endif
 
-syn cluster zftxtContains add=zftxtEscapedChar
-syn cluster zftxtContains add=zftxtFunc
-syn cluster zftxtContains add=zftxtLink
-syn cluster zftxtContains add=zftxtMark
-syn cluster zftxtContains add=zftxtNumber
-syn cluster zftxtContains add=zftxtOption
-syn cluster zftxtContains add=zftxtPreProc
+syn cluster zftxtContainsExceptString add=zftxtEscapedChar
+syn cluster zftxtContainsExceptString add=zftxtFunc
+syn cluster zftxtContainsExceptString add=zftxtLink
+syn cluster zftxtContainsExceptString add=zftxtMark
+syn cluster zftxtContainsExceptString add=zftxtNumber
+syn cluster zftxtContainsExceptString add=zftxtOption
+syn cluster zftxtContainsExceptString add=zftxtPreProc
+syn cluster zftxtContainsExceptString add=zftxtTag
+syn cluster zftxtContainsExceptString add=zftxtType
+syn cluster zftxtContainsExceptString add=zftxtVar
+
+syn cluster zftxtContains add=zftxtContainsExceptString
 syn cluster zftxtContains add=zftxtString
-syn cluster zftxtContains add=zftxtTag
-syn cluster zftxtContains add=zftxtType
-syn cluster zftxtContains add=zftxtVar
 
 " ============================================================
 syn match zftxtNormal "[[:alpha:]]" contains=@zftxtOperator
@@ -80,19 +82,11 @@ syn match zftxtVar "%\+([^()]*)%*" contains=@zftxtContains
 syn match zftxtVar "%\+{[^{}]*}%*" contains=@zftxtContains
 
 " ============================================================
-" "xxx"
-" ".*?"
-syn match zftxtString '".\{-}"' contains=@zftxtContains
-" 'xxx'
-" (?<=([^_a-zA-Z0-9])|^)'.*?'
-syn match zftxtString "\%(\([^_a-zA-Z0-9]\)\|^\)\@<='.\{-}'" contains=@zftxtContains
-" `xxx`
-" `+.*?`+
-syn match zftxtString "`\+.\{-}`\+" contains=@zftxtContains
-" “xxx”
-" ‘.*?’
-syn match zftxtString "\%u201c.\{-}\%u201d" contains=@zftxtContains
-syn match zftxtString "\%u2018.\{-}\%u2019" contains=@zftxtContains
+syn region zftxtString start=/"/ end=/"/ end=/$/ skip=/\\./ contains=@zftxtContainsExceptString
+syn region zftxtString start=/'/ end=/'/ end=/$/ skip=/\\./ contains=@zftxtContainsExceptString
+syn region zftxtString start=/`/ end=/`/ end=/$/ skip=/\\./ contains=@zftxtContainsExceptString
+syn region zftxtString start=/“/ end=/”/ end=/$/ skip=/\\./ contains=@zftxtContainsExceptString
+syn region zftxtString start=/‘/ end=/’/ end=/$/ skip=/\\./ contains=@zftxtContainsExceptString
 
 " ============================================================
 " 0xAbcd1234
