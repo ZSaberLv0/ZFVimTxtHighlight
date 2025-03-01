@@ -83,7 +83,7 @@ syn match zftxtVar "%\+{[^{}]*}%*" contains=@zftxtContains
 
 " ============================================================
 syn region zftxtString start=/"/ end=/"/ end=/$/ skip=/\\./ contains=@zftxtContainsExceptString
-syn region zftxtString start=/'/ end=/'/ end=/$/ skip=/\\./ contains=@zftxtContainsExceptString
+syn region zftxtString start=/'\(s \|t \| \w\)\@!/ end=/'/ end=/$/ end=/s / skip=/\\./ contains=@zftxtContainsExceptString
 syn region zftxtString start=/`/ end=/`/ end=/$/ skip=/\\./ contains=@zftxtContainsExceptString
 syn region zftxtString start=/“/ end=/”/ end=/$/ skip=/\\./ contains=@zftxtContainsExceptString
 syn region zftxtString start=/‘/ end=/’/ end=/$/ skip=/\\./ contains=@zftxtContainsExceptString
